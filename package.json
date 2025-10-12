@@ -1,4 +1,4 @@
-```json
+json
 {
   "name": "gemini-netlify-function",
   "version": "1.0.0",
@@ -8,4 +8,3 @@
     "@google/genai": "^0.15.0"
   }
 }
-```
