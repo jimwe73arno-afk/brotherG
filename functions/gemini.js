@@ -1,7 +1,6 @@
 // File: functions/gemini.js 
 const { GoogleGenAI } = require('@google/genai');
 
-// Load API Key securely from Environment variables
 const ai = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY});
 
 exports.handler = async (event) => {
@@ -13,18 +12,17 @@ exports.handler = async (event) => {
         const body = JSON.parse(event.body);
         const userMessage = body.message;
         
-        // Safety check
         if (!userMessage) {
             return { statusCode: 400, body: JSON.stringify({ error: "No message provided." }) };
         }
         
-        // Call Gemini API (using a fast model)
+        // --- GEMINI API CALL ---
         const response = await ai.models.generateContent({
             model: 'gemini-2.5-flash',
             contents: [
                 { 
                     role: "user", 
-                    parts: [{ text: `You are the AI assistant for Prime Freelance IT. Answer this question professionally, concisely, and ONLY based on general knowledge for IT services: ${userMessage}` }] 
+                    parts: [{ text: `You are the AI assistant for Prime Freelance IT. Answer this question professionally: ${userMessage}` }] 
                 }
             ],
         });
@@ -37,11 +35,11 @@ exports.handler = async (event) => {
         };
 
     } catch (error) {
-        console.error("Gemini API Error:", error);
+        console.error("Internal Error:", error);
         return { 
             statusCode: 500, 
             headers: { "Access-Control-Allow-Origin": "*" },
-            body: JSON.stringify({ error: "Sorry, I couldn't process the request due to an internal error." }),
+            body: JSON.stringify({ error: "Sorry, the AI system is currently unavailable." }),
         };
     }
 };
