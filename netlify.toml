@@ -1,6 +1,7 @@
 ```toml
 [build]
   functions = "functions"
+  
 [[headers]]
   for = "/*"
   [headers.values]
