@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Netlify function to connect Blogger to Google Gemini API.",
   "main": "functions/gemini.js",
+  "type": "module",  <--- এই নতুন লাইনটি যোগ করা হয়েছে
   "dependencies": {
     "@google/genai": "^0.15.0"
   }
