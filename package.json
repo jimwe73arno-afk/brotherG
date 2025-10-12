@@ -1,0 +1,11 @@
+```json
+{
+  "name": "gemini-netlify-function",
+  "version": "1.0.0",
+  "description": "Netlify function to connect Blogger to Google Gemini API.",
+  "main": "functions/gemini.js",
+  "dependencies": {
+    "@google/genai": "^0.15.0"
+  }
+}
+```
